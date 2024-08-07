@@ -1,79 +1,59 @@
-# Tienda Online (abstracta)
+# Tienda En Línea Simple
 
-Plantilla de tienda online siguiendo una arquitectura limpia.
+Tienda En Línea Simple es una plataforma de e-commerce diseñada para proporcionar una experiencia de compra en línea sencilla y eficiente. Nuestro objetivo es ofrecer a los usuarios una forma intuitiva de explorar, seleccionar y comprar productos desde la comodidad de sus hogares.
 
-## Estructura básica de carpetas
+## Características Principales
 
-```md
-e-commerce/
-|
-|-- core/
-|   |-- entities/          # Objetos de dominio puro (Producto, Usuario, Carrito, Orden, etc.)
-|   |-- use_cases/         # Lógica de negocio principal (AgregarProducto, RealizarOrden, etc.)
-|
-|-- application/
-|   |-- services/              # Servicios de aplicación que coordinan los casos de uso y las interfaces
-|   |-- dtos/                  # Objetos de Transferencia de Datos para comunicación entre capas
-|
-|-- adapters/
-|   |-- api/
-|   |   |-- routers/           # Rutas FastAPI
-|   |   |-- schemas/           # Modelos Pydantic para validación de API
-|   |   |-- middlewares/       # Middlewares específicos de la API
-|   |
-|   |-- db/
-|   |   |-- models/            # Modelos SQLAlchemy
-|   |   |-- repositories/      # Implementaciones de repositorios que interactúan con la base de datos
-|   |
-|   |-- third_party/           # Código para interactuar con servicios externos (pasarelas de pago, envío, etc.)
-|
-|-- infrastructure/
-|   |-- config/                # Configuraciones (base de datos, variables de entorno, etc.)
-|   |-- main.py                # Punto de entrada principal (creación de la aplicación FastAPI)
-|   |-- utils/                 # Utilidades generales (criptografía, manejo de fechas, etc.)
-|   |-- views/                 # Vista de UI
-|
-|-- tests/
-|   |-- unit/                  # Pruebas unitarias
-|   |-- integration/           # Pruebas de integración
-|
-|-- docs/                      # Documentación
-|-- .gitignore
-|-- README.md
-|-- pyproject.toml             # Dependencias (si estás usando Poetry)
+- **Catálogo de Productos:** Una amplia variedad de productos organizados en categorías claras y navegables.
 
+- **Carrito de Compras:** Los usuarios pueden agregar productos a su carrito, modificar la cantidad y ver el total antes de realizar la compra.
+
+- **Registro y Autenticación:** Los usuarios tienen la opción de crear una cuenta para un proceso de compra más rápido en futuras visitas y para rastrear el estado de sus pedidos.
+
+- **Gestión de Pedidos:** Una vez que se realiza una compra, los usuarios pueden rastrear el estado de su pedido y ver su historial de compras.
+
+- **Panel de Administración:** Una interfaz para que los administradores gestionen productos, vean estadísticas de ventas y atiendan las consultas de los clientes.
+
+- **Métodos de Pago Integrados:** Integración con principales proveedores de pago para ofrecer múltiples opciones de pago de forma segura.
+
+- **Responsive Design:** La plataforma está diseñada para ser accesible y fácil de usar tanto en dispositivos móviles como en computadoras de escritorio.
+
+## ¿Por qué usar Tienda En Línea Simple?
+
+En la era digital actual, la compra en línea se ha convertido en una necesidad. Tienda En Línea Simple se creó con la idea de simplificar el proceso de e-commerce, eliminando las complicaciones innecesarias y centrando la experiencia del usuario en lo que realmente importa: encontrar y comprar los productos que desea de manera rápida y sin problemas.
+
+Ya sea que estés buscando lanzar tu propia tienda en línea o simplemente quieras explorar cómo funciona el e-commerce, Tienda En Línea Simple es el punto de partida perfecto.
+
+## Tabla de Contenidos
+
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Desarrollo](#desarrollo)
+  - [Pruebas](#pruebas)
+- [Contribución](#contribución)
+- [Licencia](#licencia)
+- [Créditos](#créditos)
+- [Contacto](#contacto)
+
+## Instalación
+
+Pasos detallados sobre cómo instalar el proyecto, incluyendo cualquier dependencia.
+
+```bash
+# Ejemplo de comando
+pip install -r requirements.txt
 ```
-## Entidades
 
-User: Representa a un usuario del sistema.
+## Licencia
 
-Atributos: ID, username, email, password.
-Métodos: verify_password.
-Product: Representa un producto en venta.
+[License BSD](./LICENSE)
 
-Atributos: ID, name, description, price, stock_quantity.
-Métodos: Ninguno, a menos que haya una lógica de negocio específica.
-Cart: Representa el carrito de compras de un usuario.
+## Creditos
 
-Atributos: ID, user_id, list of Product IDs, total_price.
-Métodos: add_product, remove_product.
-Order: Representa una orden de compra realizada por un usuario.
+- Pérez Catriel
 
-Atributos: ID, user_id, list of Product IDs, total_price, status.
-Métodos: place_order.
-Category: Representa una categoría de productos.
+## Contacto
 
-Atributos: ID, name, list of Product IDs.
-Métodos: Ninguno, a menos que haya una lógica de negocio específica.
-Payment: Representa un pago realizado por un usuario.
+- [Pérez Catriel](https://datacraft.vercel.app)
 
-Atributos: ID, user_id, order_id, amount.
-Métodos: process_payment.
-
-
-> Para más info leer la documentación en /documentation & test/docs/
-
-
-## Contactame
-
-[linkedIn](https://linkedin.com/in/perezcatriel)
+© Pérez Catriel, 2023. Todos los derechos reservados.
