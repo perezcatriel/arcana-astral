@@ -25,7 +25,7 @@
     background-image: url("@/assets/background.webp");
     background-size: cover;
     background-position: center;
-    color: var(--color-text);
+    color: var(--color-background);
     padding: 2rem 1rem;
     text-align: center;
     display: flex;

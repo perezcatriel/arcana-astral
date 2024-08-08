@@ -28,10 +28,10 @@ export default {
 
 /* Global styles */
 :root {
-  --color-primary: #12c2e9;
-  --color-accent: #8e95ed;
-  --color-text: #f0f4fa;
-  --color-background: #070412;
+  --color-primary: #b59788;
+  --color-accent: #86553e;
+  --color-text: #0c0907;
+  --color-background: #eedcd4;
   --font-homenaje: "Homenaje", sans-serif;
   --font-sans: "Source Sans 3", sans-serif;
 }
