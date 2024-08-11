@@ -2,12 +2,14 @@
   <header class="header">
     <div class="container">
       <div class="logo-container">
-        <img src="@/assets/logo.png" alt="Arcana Astral Logo" class="logo-image" />
+        <img
+          src="@/assets/logo.jpg"
+          alt="Arcana Astral Logo"
+          class="logo-image"
+        />
       </div>
       <h1 class="logo">Arcana Astral</h1>
-      <button class="menu-toggle" @click="toggleMenu">
-        &#9776;
-      </button>
+      <button class="menu-toggle" @click="toggleMenu">&#9776;</button>
       <nav class="nav" :class="{ 'nav-open': isMenuOpen }">
         <ul>
           <li><a href="#services">Servicios</a></li>
@@ -143,7 +145,6 @@ export default {
     width: auto;
     background: none;
     padding: 0;
-    margin-top: 0.5rem;
   }
 
   .nav ul {

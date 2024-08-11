@@ -40,6 +40,7 @@ export default {
   color: var(--color-text);
   padding: 1rem;
   text-align: center;
+  margin-top: 5rem;
 }
 
 .social-links {

@@ -17,6 +17,8 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap");
+
 /* Reset CSS */
 *,
 *::before,
@@ -32,8 +34,8 @@ export default {
   --color-accent: #86553e;
   --color-text: #0c0907;
   --color-background: #eedcd4;
-  --font-homenaje: "Homenaje", sans-serif;
-  --font-sans: "Source Sans 3", sans-serif;
+  --font-homenaje: "Poppins", sans-serif;
+  --font-sans: "Poppins", sans-serif;
 }
 
 body {
@@ -45,27 +47,23 @@ body {
   padding: 0;
 }
 
-/* Mobile-first default styles for all components */
-.header,
-.nav,
-.main,
-.footer {
-  padding: 1rem;
+/* Use Poppins Regular (default) for most text */
+p,
+li,
+span,
+body {
+  font-family: var(--font-sans);
+  font-weight: 400; /* Poppins Regular */
 }
 
-/* Responsive adjustments for desktop */
-@media (min-width: 768px) {
-  .header {
-    padding: 2rem;
-  }
-  .nav {
-    padding: 2rem;
-  }
-  .main {
-    padding: 2rem;
-  }
-  .footer {
-    padding: 2rem;
-  }
+/* Use Poppins Bold for headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-homenaje);
+  font-weight: 700; /* Poppins Bold */
 }
 </style>

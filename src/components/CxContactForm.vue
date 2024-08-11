@@ -1,93 +1,87 @@
 <template>
   <div class="form-container" id="contact">
-    <form @submit.prevent="submitForm">
-      <input v-model="name" type="text" placeholder="Nombre" class="form-input" required />
-      <input v-model="email" type="email" placeholder="Correo electrónico" class="form-input" required />
-      <textarea v-model="message" placeholder="Mensaje" class="form-input" required></textarea>
-      <button type="submit" class="submit-button">Enviar</button>
-    </form>
+    <h2>Reserva tu sesión</h2>
+    <div id="hubspot-form"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ContactForm",
-  data() {
-    return {
-      name: '',
-      email: '',
-      message: '',
-    };
-  },
-  methods: {
-    async submitForm() {
-      const url = 'https://<YOUR_MAILCHIMP_SERVER>.api.mailchimp.com/3.0/lists/<YOUR_LIST_ID>/members/';
-      const apiKey = '<YOUR_MAILCHIMP_API_KEY>';
+  name: "CxContactForm",
+  mounted() {
+    // Cargar el script de HubSpot
+    const script = document.createElement("script");
+    script.charset = "utf-8";
+    script.type = "text/javascript";
+    script.src = "//js.hsforms.net/forms/embed/v2.js";
 
-      try {
-        await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Basic ${btoa(`anystring:${apiKey}`)}`
-          },
-          body: JSON.stringify({
-            email_address: this.email,
-            status: 'subscribed',
-            merge_fields: {
-              FNAME: this.name,
-              MESSAGE: this.message,
-            }
-          })
-        });
-        alert('Formulario enviado con éxito');
-      } catch (error) {
-        console.error('Error al enviar el formulario:', error);
-      }
-    }
-  }
+    script.onload = () => {
+      // Crear el formulario de HubSpot después de que se haya cargado el script
+      window.hbspt.forms.create({
+        region: "na1",
+        portalId: "44184354",
+        formId: "f7e45c1e-0f89-4383-b10b-b6d3b7da95d0",
+        target: "#hubspot-form",
+        onFormSubmit: () => {
+          // Opcionalmente, puedes añadir una función aquí para manejar algo cuando el formulario se envíe.
+        },
+      });
+    };
+
+    // Agregar el script al cuerpo del documento
+    document.body.appendChild(script);
+  },
 };
 </script>
 
 <style scoped>
 .form-container {
   width: 100%;
-  max-width: 800px; /* 80% of 1000px for example */
+  max-width: 800px;
   margin: 0 auto;
   padding: 1rem;
+  margin-top: 5rem;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+h2 {
+  text-align: center;
+  padding: 0.5rem;
+  color: var(--color-primary);
 }
 
-.form-input {
+#hubspot-form {
   width: 100%;
   max-width: 80%;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  border: 1px solid var(--color-text);
-  border-radius: 5px;
-  font-size: 1rem;
-  color: var(--color-background);
-  background-color: var(--color-text);
+  margin: 0 auto;
 }
 
-.submit-button {
-  background-color: var(--color-primary);
+.hs-form {
+  text-align: center;
+}
+
+.hs-main-font-element {
+  font-size: 1.2rem;
   color: var(--color-text);
-  border: none;
-  border-radius: 5px;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  cursor: pointer;
 }
 
-@media (min-width: 768px) {
-  .form-input {
-    max-width: 80%;
-  }
+.hs-form input[type="submit"] {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+  padding: 0.8rem 2rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hs-form input[type="submit"]:hover {
+  background-color: darken(var(--color-accent), 10%);
+}
+
+.hs-form .submitted-message {
+  font-size: 1.5rem;
+  color: var(--color-text);
+  text-align: center;
+  margin-top: 2rem;
 }
 </style>
